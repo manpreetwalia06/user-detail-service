@@ -14,7 +14,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter
     protected void configure(HttpSecurity http) throws Exception 
     {
         http.csrf().disable().authorizeRequests()
-        .antMatchers(HttpMethod.GET, "/user-detail").access("hasRole('USER') or hasRole('ADMIN')")
+        .antMatchers(HttpMethod.GET, "/user-detail/*").access("hasRole('USER') or hasRole('ADMIN')")
         .antMatchers(HttpMethod.POST, "/user-detail/*").access("hasRole('ADMIN')")
         .antMatchers(HttpMethod.PUT, "/user-detail").access("hasRole('ADMIN')")
         .and().httpBasic();
